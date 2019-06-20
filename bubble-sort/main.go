@@ -13,8 +13,8 @@ func main() {
 
 func sort(arr []int) int {
 	var count int
-	for i := len(arr) - 1; i < len(arr)-2; i++ {
-		for j := len(arr) - 1; j > i; i-- {
+	for i := 0; i < len(arr)-1; i++ {
+		for j := len(arr) - 1; j > i; j-- {
 			if arr[j] < arr[j-1] {
 				arr[j], arr[j-1] = arr[j-1], arr[j]
 				count++
