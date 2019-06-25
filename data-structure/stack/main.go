@@ -5,7 +5,15 @@ import (
 )
 
 func main() {
-
+	input := []string{"1", "2", "+", "3", "4", "-", "*"}
+	for _, v := range input {
+		switch v {
+		case "+","-","*":
+			// pop 2 factor and push
+		default:
+			// push
+		}
+	}
 }
 
 type stack struct {
