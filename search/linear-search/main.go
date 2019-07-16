@@ -5,7 +5,17 @@ import (
 )
 
 
-func search(a []int, key, n int) bool {
+func SearchBySentinel(a []int, key, n int) bool {
+	for _, v := range a {
+		if v == key {
+			return true
+		}
+	}
+	return false
+}
+
+
+func SearchByRange(a []int, key, n int) bool {
 	a = append(a, key)
 
 	// 番兵を利用して比較演算子をへらす
@@ -21,7 +31,7 @@ func main() {
 
 	var sum int
 	for _, e := range q {
-		if search(a, e, n) {
+		if SearchBySentinel(a, e, n) {
 			sum++
 		}
 	}
