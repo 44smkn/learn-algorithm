@@ -21,14 +21,16 @@ func main() {
 }
 
 func sort(arr []int) {
-	for i := 1; i < len(arr); i++ { // start at 2nd factor
-		j, key := i-1, arr[i] // key is the factor that is concerned
+	// iは未ソート部分列の先頭インデックス
+	for i := 1; i < len(arr); i++ { // 1番目の要素は既にソート済の想定なので、2番目の要素からスタートする
+		// jはソート済み部分列からAを挿入するためのループ変数
+		j, key := i-1, arr[i]
 		for ; j >= 0 && arr[j] > key; j-- {
 			arr[j+1] = arr[j]
 		}
 
 		// why j "+1" ?
-		// It is because of j-- calculattion handled before judge conditions
+		// 条件をジャッジする前にjのデクリメントが行われているため
 		arr[j+1] = key
 	}
 }
