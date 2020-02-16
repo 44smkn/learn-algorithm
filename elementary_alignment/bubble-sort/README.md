@@ -2,9 +2,12 @@
 
 ## description
 
-[this article](https://www.geeksforgeeks.org/bubble-sort/) is very useful for understanding.
+### バブルソートの要素
 
-Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+バブルソートでは挿入ソートと同じく、「ソート済みの部分列」と「未ソートの部分列」に分かれる。  
+
+- 順番が逆になっている隣接要素がなくなるまで、繰り返す
+  1. 配列の末尾から隣接する要素を順番に比べていき、大小関係が逆ならば交換する
 
 ## Time Complexity
 
