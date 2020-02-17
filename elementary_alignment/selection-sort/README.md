@@ -1,11 +1,15 @@
-# Bubble Sort
+# Selection Sort
 
 ## description
 
-[this article](https://www.geeksforgeeks.org/selection-sort/) is very useful for understanding.
+### 選択ソートの要素
 
-The selection sort algorithm sorts an array by repeatedly finding the minimum element (considering ascending order) from unsorted part and putting it at the beginning.
+選択ソートは、「挿入ソート」「バブルソート」と同様に、各計算ステップにおいて、配列は「ソート済の部分列」と「未ソートの部分列」とに分けられます。
 
-## Time Complexity
+- 以下の処理をN-1回繰り返します
+  1. 未ソートの部分から最小値の要素の位置minjを特定する
+  1. minjの位置にある要素と未ソートの部分の戦闘要素を交換する
+
+### Time Complexity
 
 O(n^2)
