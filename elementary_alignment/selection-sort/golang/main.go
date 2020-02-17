@@ -5,9 +5,17 @@ import (
 )
 
 func main() {
-	arr := []int{5, 6, 4, 2, 1, 3}
+	var n int
+	fmt.Scan(&n)
+
+	arr := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&arr[i])
+	}
+
+	fmt.Printf("ソート前： %v\n", arr)
 	count := sort(arr)
-	fmt.Println("sorted array:", arr)
+	fmt.Printf("ソート後： %v\n", arr)
 	fmt.Println("count:", count)
 }
 
@@ -15,9 +23,9 @@ func sort(arr []int) int {
 	var count int
 	for i := 0; i < len(arr)-1; i++ {
 		minj := i
-		for j := i+1; j < len(arr); j++ {
+		for j := i + 1; j < len(arr); j++ {
 			if arr[minj] > arr[j] {
-				minj=j
+				minj = j
 				count++
 			}
 		}
