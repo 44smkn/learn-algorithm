@@ -8,7 +8,7 @@
 
 gの値を小さくしていくことで最終的な単純な挿入ソートとなる（g=1）
 
-![図示](image.png)
+![図示](image.jpg)
 
 ### Time Complexity
 
