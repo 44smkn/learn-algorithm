@@ -1,10 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"strconv"
-	"log"
+	"bufio"
 	"errors"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func check(err error) {
@@ -14,10 +17,11 @@ func check(err error) {
 }
 
 func main() {
-	input := []string{"1", "2", "+", "3", "4", "-", "*"}
+	stdin := bufio.NewScanner(os.Stdin)
+	stdin.Scan()
 
-	s := newStack(make([]int,10))
-	for _, v := range input {
+	s := newStack(make([]int, 10))
+	for _, v := range strings.Split(stdin.Text(), " ") {
 		switch v {
 		case "+":
 			a, err := s.pop()
@@ -31,14 +35,14 @@ func main() {
 			check(err)
 			b, err := s.pop()
 			check(err)
-			err = s.push(b - a);
+			err = s.push(b - a)
 			check(err)
 		case "*":
 			a, err := s.pop()
 			check(err)
 			b, err := s.pop()
 			check(err)
-			err = s.push(b * a);
+			err = s.push(b * a)
 			check(err)
 		default:
 			num, err := strconv.Atoi(v)
@@ -52,15 +56,15 @@ func main() {
 }
 
 type stack struct {
-	top int
-	max int
+	top   int
+	max   int
 	slice []int
 }
 
 func newStack(slice []int) *stack {
-	return  &stack{
-		top: 0,
-		max: len(slice),
+	return &stack{
+		top:   0,
+		max:   len(slice),
 		slice: slice,
 	}
 }
@@ -69,11 +73,11 @@ func (s *stack) isEmpty() bool {
 	return s.top == 0
 }
 
-func (s *stack) isFull() bool{
-	return s.top == s.max - 1
+func (s *stack) isFull() bool {
+	return s.top == s.max-1
 }
 
-func (s *stack) push(x int)error {
+func (s *stack) push(x int) error {
 	if s.isFull() {
 		return errors.New("Overflow")
 	}
@@ -83,7 +87,7 @@ func (s *stack) push(x int)error {
 }
 
 func (s *stack) pop() (int, error) {
-	if s.isEmpty(){
+	if s.isEmpty() {
 		return 0, errors.New("Underflow")
 	}
 	s.top--
