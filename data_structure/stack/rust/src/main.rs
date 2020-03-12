@@ -1,9 +1,15 @@
 mod stack;
 
 use stack::SimpleStack;
+use std::io;
 
 fn main() {
-    println!("Hello, world!");
+    let mut expression = String::new();
+    io::stdin()
+        .read_line(&mut expression)
+        .expect("Failed to read line");
+
+    println!("answer: {}", calc(&expression))
 }
 
 fn calc(reverse_polish_notation: &str) -> i32 {
