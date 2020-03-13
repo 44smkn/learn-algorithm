@@ -1,9 +1,13 @@
 package main
 
 import (
-	"log"
-	"fmt"
+	"bufio"
 	"errors"
+	"fmt"
+	"log"
+	"os"
+	"strconv"
+	"strings"
 )
 
 type process struct {
@@ -26,36 +30,31 @@ func min(num1, num2 int) int {
 }
 
 func main() {
-	processes := []process {
-		{
-			name: "p1",
-			time: 150,
-		},
-		{
-			name: "p2",
-			time: 80,
-		},
-		{
-			name: "p3",
-			time: 200,
-		},
-		{
-			name: "p4",
-			time: 350,
-		},
-		{
-			name: "p5",
-			time: 20,
-		},
+	stdin := bufio.NewScanner(os.Stdin)
+	stdin.Scan()
+	firstline := strings.Split(stdin.Text(), " ")
+	n, _ := strconv.Atoi(firstline[0])
+	quantum, _ := strconv.Atoi(firstline[1])
+
+	processes := make([]process, n)
+	for i := 0; i < n; i++ {
+		stdin.Scan()
+		input := strings.Split(stdin.Text(), " ")
+		time, _ := strconv.Atoi(input[1])
+		proc := process{
+			name: input[0],
+			time: time,
+		}
+		processes[i] = proc
 	}
-	quantum := 100
-	
+
 	q := newQueue(make([]process, 8))
 	for _, v := range processes {
 		err := q.enqueue(&v)
 		check(err)
 	}
 
+	fmt.Println("\nresult:")
 	var elaps int
 	for !q.isEmpty() {
 		p, err := q.dequeue()
@@ -73,17 +72,17 @@ func main() {
 }
 
 type queue struct {
-	head int
-	tail int
+	head  int
+	tail  int
 	slice []process
-	max int
+	max   int
 }
 
 func newQueue(slice []process) *queue {
-	return  &queue{
-		head: 0,
-		tail: 0,
-		max: len(slice),
+	return &queue{
+		head:  0,
+		tail:  0,
+		max:   len(slice),
 		slice: slice,
 	}
 }
@@ -94,7 +93,7 @@ func (q *queue) isEmpty() bool {
 
 // On array of Ring Buffer, head is next to tail
 func (q *queue) isFull() bool {
-	return q.head == (q.tail + 1) % q.max
+	return q.head == (q.tail+1)%q.max
 }
 
 func (q *queue) enqueue(x *process) error {
