@@ -1,22 +1,26 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strconv"
 )
 
 type node struct {
-	key int
+	key        int
 	prev, next *node
 }
 
 func main() {
-	insert(5)
-	insert(2)
-	insert(3)
-	insert(1)
-	deleteKey(3)
-	insert(6)
-	deleteKey(5)
+	stdin := bufio.NewScanner(os.Stdin)
+	stdin.Scan()
+	n, _ := strconv.Atoi(stdin.Text())
+
+	for i := 0; i < n; i++ {
+		stdin.Scan()
+		switch stdin.Text() 
+	}
 
 	cur := null.next
 	for cur != null {
@@ -35,7 +39,7 @@ func init() {
 
 func insert(key int) {
 	x := &node{
-		key: key,
+		key:  key,
 		next: null.next,
 		prev: null,
 	}
