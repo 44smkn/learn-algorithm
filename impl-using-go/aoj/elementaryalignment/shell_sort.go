@@ -1,20 +1,4 @@
-package main
-
-import "fmt"
-
-func main() {
-	var n int
-	fmt.Scan(&n)
-	arr := make([]int, n)
-	for i := 0; i < n; i++ {
-		fmt.Scan(&arr[i])
-	}
-
-	gs := []int{4, 3, 1}
-	fmt.Printf("ソート前： %v\n", arr)
-	ShellSort(arr, gs)
-	fmt.Printf("ソート後： %v\n", arr)
-}
+package elementaryalignment
 
 func ShellSort(arr, gs []int) {
 	for _, g := range gs {
