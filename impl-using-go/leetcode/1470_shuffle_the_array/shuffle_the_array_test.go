@@ -7,22 +7,28 @@ import (
 )
 
 func TestShuffle(t *testing.T) {
+	t.Parallel()
 	tests := []struct {
+		name string
 		// input
 		nums []int
 		n    int
 		// output
 		want []int
 	}{
-		{[]int{2, 5, 1, 3, 4, 7}, 3, []int{2, 3, 5, 4, 1, 7}},
-		{[]int{1, 2, 3, 4, 4, 3, 2, 1}, 4, []int{1, 4, 2, 3, 3, 2, 4, 1}},
-		{[]int{1, 1, 2, 2}, 2, []int{1, 2, 1, 2}},
+		{"6 elements", []int{2, 5, 1, 3, 4, 7}, 3, []int{2, 3, 5, 4, 1, 7}},
+		{"8 elements", []int{1, 2, 3, 4, 4, 3, 2, 1}, 4, []int{1, 4, 2, 3, 3, 2, 4, 1}},
+		{"4 elements", []int{1, 1, 2, 2}, 2, []int{1, 2, 1, 2}},
 	}
 
 	for _, tt := range tests {
-		got := shuffle(tt.nums, tt.n)
-		if diff := cmp.Diff(tt.want, got); diff != "" {
-			t.Error(diff)
-		}
+		tt := tt // シャドウイングしないとRunが走るタイミングが逐次ではないため、最後の要素が3回行われる
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got := shuffle(tt.nums, tt.n)
+			if diff := cmp.Diff(tt.want, got); diff != "" {
+				t.Error(diff)
+			}
+		})
 	}
 }
