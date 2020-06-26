@@ -1,6 +1,7 @@
-package shuffle_the_array
+package shuffle_test
 
 import (
+	shuffle "leetcode/1470_shuffle_the_array"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -25,7 +26,7 @@ func TestShuffle(t *testing.T) {
 		tt := tt // シャドウイングしないとRunが走るタイミングが逐次ではないため、最後の要素が3回行われる
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			got := shuffle(tt.nums, tt.n)
+			got := shuffle.Shuffle(tt.nums, tt.n)
 			if diff := cmp.Diff(tt.want, got); diff != "" {
 				t.Error(diff)
 			}

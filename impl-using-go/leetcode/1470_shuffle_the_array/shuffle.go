@@ -1,6 +1,6 @@
-package shuffle_the_array
+package shuffle
 
-func shuffle(nums []int, n int) []int {
+func Shuffle(nums []int, n int) []int {
 	x := nums[:n]
 	y := nums[n:]
 	output := make([]int, 0, 2*n)

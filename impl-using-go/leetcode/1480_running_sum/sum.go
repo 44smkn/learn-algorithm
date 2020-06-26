@@ -1,7 +1,7 @@
-package running_sum
+package sum
 
 // https://leetcode.com/problems/running-sum-of-1d-array/
-func runningSum(nums []int) []int {
+func RunningSum(nums []int) []int {
 	output := make([]int, 0, len(nums))
 	for i := range nums {
 		sum := 0

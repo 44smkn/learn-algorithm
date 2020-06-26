@@ -1,6 +1,7 @@
-package running_sum
+package sum_test
 
 import (
+	sum "leetcode/1480_running_sum"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
@@ -22,7 +23,7 @@ func TestRunningSum(t *testing.T) {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
 			t.Parallel()
-			got := runningSum(tt.input)
+			got := sum.RunningSum(tt.input)
 			if diff := cmp.Diff(tt.want, got); diff != "" {
 				t.Errorf(diff)
 			}
