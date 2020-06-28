@@ -24,7 +24,9 @@ func TestKidsWithCandies(t *testing.T) {
 	}
 
 	for _, tt := range tests {
+		tt := tt
 		t.Run(tt.name, func(*testing.T) {
+			t.Parallel()
 			got := candies.KidsWithCandies(tt.candies, tt.extraCandies)
 			if diff := cmp.Diff(tt.want, got); diff != "" {
 				t.Errorf(fmt.Sprintf("you wants %v. but, you got %v.", tt.want, got))
