@@ -1,10 +1,8 @@
-package main
+package datastructure
 
 import (
-	"bufio"
-	"fmt"
-	"os"
 	"strconv"
+	"strings"
 )
 
 type node struct {
@@ -12,21 +10,30 @@ type node struct {
 	prev, next *node
 }
 
-func main() {
-	stdin := bufio.NewScanner(os.Stdin)
-	stdin.Scan()
-	n, _ := strconv.Atoi(stdin.Text())
-
-	for i := 0; i < n; i++ {
-		stdin.Scan()
-		switch stdin.Text() 
+func printList(instructions []string) []int {
+	for _, instruction := range instructions {
+		commands := strings.Split(instruction, " ")
+		kind := commands[0]
+		key, _ := strconv.Atoi(commands[1])
+		switch kind {
+		case "insert":
+			insert(key)
+		case "delete":
+			deleteKey(key)
+		case "deleteFirst":
+			deleteFirst()
+		case "deleteLast":
+			deleteLast()
+		}
 	}
 
-	cur := null.next
-	for cur != null {
-		fmt.Println(cur.key)
+	cur := null
+	output := make([]int, 0, 10)
+	for cur.next != null {
 		cur = cur.next
+		output = append(output, cur.key)
 	}
+	return output
 }
 
 // 番兵
