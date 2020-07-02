@@ -1,58 +1,68 @@
-package main
+package datastructure
 
 import (
-	"bufio"
 	"errors"
-	"fmt"
-	"log"
-	"os"
 	"strconv"
 	"strings"
 )
 
-func check(err error) {
-	if err != nil {
-		log.Fatalln(err)
-	}
-}
-
-func main() {
-	stdin := bufio.NewScanner(os.Stdin)
-	stdin.Scan()
+func calcWithStack(expression string) (int, error) {
 
 	s := newStack(make([]int, 10))
-	for _, v := range strings.Split(stdin.Text(), " ") {
+	for _, v := range strings.Split(expression, " ") {
 		switch v {
 		case "+":
 			a, err := s.pop()
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 			b, err := s.pop()
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 			err = s.push(b + a)
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 		case "-":
 			a, err := s.pop()
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 			b, err := s.pop()
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 			err = s.push(b - a)
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 		case "*":
 			a, err := s.pop()
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 			b, err := s.pop()
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 			err = s.push(b * a)
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 		default:
 			num, err := strconv.Atoi(v)
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 			err = s.push(num)
-			check(err)
+			if err != nil {
+				return 0, err
+			}
 		}
 	}
 
-	fmt.Println(s.slice[s.top])
+	return s.slice[s.top], nil
 }
 
 type stack struct {

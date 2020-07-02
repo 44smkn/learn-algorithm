@@ -29,6 +29,28 @@ func TestQueue(t *testing.T) {
 	}
 }
 
+func TestStack(t *testing.T) {
+	t.Parallel()
+	tests := []struct {
+		name  string
+		input string
+		want  int
+	}{
+		{"case1", "1 2 + 3 4 - *", -3},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.name, func(t *testing.T) {
+			t.Parallel()
+			got, _ := calcWithStack(tt.input)
+			if tt.want != got {
+				t.Errorf("want: %v  got: %v", tt.want, got)
+			}
+		})
+	}
+}
+
 func TestLinkedList(t *testing.T) {
 	t.Parallel()
 	tests := []struct {
