@@ -1,4 +1,4 @@
-package main
+package search
 
 import (
 	"testing"
@@ -12,11 +12,11 @@ func initVar() (a, q []int, n int) {
 }
 
 func makeRange(min, max int) []int {
-    a := make([]int, max-min+1)
-    for i := range a {
-        a[i] = min + i
-    }
-    return a
+	a := make([]int, max-min+1)
+	for i := range a {
+		a[i] = min + i
+	}
+	return a
 }
 
 func BenchmarkSearchBySentinel(b *testing.B) {

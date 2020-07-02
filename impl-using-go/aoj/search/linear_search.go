@@ -1,9 +1,8 @@
-package main
+package search
 
 import (
 	"fmt"
 )
-
 
 func SearchBySentinel(a []int, key, n int) bool {
 	for _, v := range a {
@@ -14,18 +13,19 @@ func SearchBySentinel(a []int, key, n int) bool {
 	return false
 }
 
-
 func SearchByRange(a []int, key, n int) bool {
 	a = append(a, key)
 
 	// 番兵を利用して比較演算子をへらす
 	i := 0
-	for a[i]!=key { i++ } 
+	for a[i] != key {
+		i++
+	}
 	return i != n
 }
 
 func main() {
-	a := []int{1, 2, 3, 4 ,5}
+	a := []int{1, 2, 3, 4, 5}
 	q := []int{3, 4, 1}
 	n := len(a)
 

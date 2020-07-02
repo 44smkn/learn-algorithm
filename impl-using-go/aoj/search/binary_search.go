@@ -1,10 +1,4 @@
-package main 
-
-import (
-	"fmt"
-)
-
-
+package search
 
 func binarySearch(a []int, key int) bool {
 	left := 0
@@ -21,17 +15,4 @@ func binarySearch(a []int, key int) bool {
 		}
 	}
 	return false
-}
-
-func main() {
-	a := []int{1, 2, 3, 4 ,5}
-	q := []int{3, 4, 1}
-
-	var sum int
-	for _, e := range q {
-		if binarySearch(a, e) {
-			sum++
-		}
-	}
-	fmt.Println(sum)
 }
