@@ -1,24 +1,13 @@
-package main
+package datastructure
 
 import (
-	"bufio"
 	"errors"
-	"fmt"
-	"log"
-	"os"
-	"strconv"
-	"strings"
+	"sort"
 )
 
 type process struct {
 	name string
 	time int
-}
-
-func check(err error) {
-	if err != nil {
-		log.Fatalln(err)
-	}
 }
 
 func min(num1, num2 int) int {
@@ -29,20 +18,17 @@ func min(num1, num2 int) int {
 	}
 }
 
-func main() {
-	stdin := bufio.NewScanner(os.Stdin)
-	stdin.Scan()
-	firstline := strings.Split(stdin.Text(), " ")
-	n, _ := strconv.Atoi(firstline[0])
-	quantum, _ := strconv.Atoi(firstline[1])
-
+func proceedWithQueue(n int, quantum int, times map[string]int) (map[string]int, error) {
+	keys := make([]string, 0, len(times))
+	for name := range times {
+		keys = append(keys, name)
+	}
+	sort.Strings(keys)
 	processes := make([]process, n)
-	for i := 0; i < n; i++ {
-		stdin.Scan()
-		input := strings.Split(stdin.Text(), " ")
-		time, _ := strconv.Atoi(input[1])
+	for i, name := range keys {
+		time := times[name]
 		proc := process{
-			name: input[0],
+			name: name,
 			time: time,
 		}
 		processes[i] = proc
@@ -51,24 +37,31 @@ func main() {
 	q := newQueue(make([]process, 8))
 	for _, v := range processes {
 		err := q.enqueue(&v)
-		check(err)
+		if err != nil {
+			return nil, err
+		}
 	}
 
-	fmt.Println("\nresult:")
 	var elaps int
+	output := make(map[string]int, n)
 	for !q.isEmpty() {
 		p, err := q.dequeue()
-		check(err)
+		if err != nil {
+			return nil, err
+		}
 		c := min(quantum, p.time)
 		p.time -= c
 		elaps += c
 		if p.time > 0 {
 			err := q.enqueue(p)
-			check(err)
+			if err != nil {
+				return nil, err
+			}
 		} else {
-			fmt.Printf("%v %v\n", p.name, elaps)
+			output[p.name] = elaps
 		}
 	}
+	return output, nil
 }
 
 type queue struct {
