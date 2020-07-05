@@ -51,6 +51,9 @@ func makeRange(min, max int) []int {
 	return a
 }
 
+// 番兵を利用したケース
+// 探しているKeyを一番うしろに挿入することで終了条件の比較演算をへらす
+// だけど range を使ったほうが早い
 func BenchmarkSearchBySentinel(b *testing.B) {
 	a, q, n := initVar()
 
