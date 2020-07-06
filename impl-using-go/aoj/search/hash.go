@@ -5,6 +5,12 @@ type Dictionary struct {
 	data []*int
 }
 
+const defaultDictSize = 1046527
+
+func NewDictionaryDefaultSize() Dictionary {
+	return NewDictionary(defaultDictSize)
+}
+
 func NewDictionary(size int) Dictionary {
 	return Dictionary{
 		size: size,
@@ -32,6 +38,20 @@ func (d Dictionary) Insert(key int) {
 		if d.data[j] == nil {
 			d.data[j] = &key
 			return
+		} else {
+			i++
+		}
+	}
+}
+
+func (d Dictionary) Search(key int) (int, bool) {
+	i := 0
+	for {
+		j := h(key, i, d.size)
+		if *d.data[j] == key {
+			return j, true
+		} else if d.data[j] == nil || i >= d.size {
+			return 0, false
 		} else {
 			i++
 		}
