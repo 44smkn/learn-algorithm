@@ -3,7 +3,7 @@
 螺旋本やLeetCodeからアルゴリズムを実装して勉強する本
 GoとRustで実装していく
 
-[![GoDoc](https://godoc.org/github.com/shibukawa/my-lib?status.svg)](https://godoc.org/github.com/44smkn/learn-algorithm)
+[![GoDoc](https://godoc.org/github.com/44smkn/learn-algorithm?status.svg)](https://godoc.org/github.com/44smkn/learn-algorithm)
 
 ## アルゴリズムの計算量
 
