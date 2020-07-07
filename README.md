@@ -3,6 +3,8 @@
 螺旋本やLeetCodeからアルゴリズムを実装して勉強する本
 GoとRustで実装していく
 
+[![GoDoc](https://godoc.org/github.com/shibukawa/my-lib?status.svg)](https://godoc.org/github.com/44smkn/learn-algorithm)
+
 ## アルゴリズムの計算量
 
 アルゴリズムの効率を評価する指標の一つとして、O表記法がある。  
