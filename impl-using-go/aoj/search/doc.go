@@ -2,8 +2,8 @@
 	Package search は「探索」のアルゴリズム群です
 	キーと値が同一の単純なデータを探索する問題を解いていく
 
-	線形探索
-	
+	Liner Search
+
 	goの言語レベルでサポートされている
 		for i, v range slice { ... }
 	と番兵を利用した
@@ -15,3 +15,4 @@
 		BenchmarkSearchByRange-4      	1000000000	         0.0209 ns/op	       0 B/op	       0 allocs/op
 	のような結果となる
 */
+package search
