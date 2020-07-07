@@ -1,7 +1,7 @@
 package sum_test
 
 import (
-	sum "leetcode/1480_running_sum"
+	sum "impl-using-go/leetcode/1480_running_sum"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"

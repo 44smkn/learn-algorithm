@@ -1,4 +1,4 @@
-module aoj
+module impl-using-go
 
 go 1.14
 

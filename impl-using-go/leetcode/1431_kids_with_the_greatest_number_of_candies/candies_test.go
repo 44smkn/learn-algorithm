@@ -2,7 +2,7 @@ package candies_test
 
 import (
 	"fmt"
-	candies "leetcode/1431_kids_with_the_greatest_number_of_candies"
+	candies "impl-using-go/leetcode/1431_kids_with_the_greatest_number_of_candies"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"

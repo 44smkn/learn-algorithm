@@ -1,7 +1,7 @@
 package steps_test
 
 import (
-	steps "leetcode/1342_number_of_steps_to_reduce_a_number_to_zero"
+	steps "impl-using-go/leetcode/1342_number_of_steps_to_reduce_a_number_to_zero"
 	"testing"
 )
 

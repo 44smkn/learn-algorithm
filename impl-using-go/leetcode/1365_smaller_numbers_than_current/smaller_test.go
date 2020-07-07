@@ -1,7 +1,7 @@
 package smaller_test
 
 import (
-	smaller "leetcode/1365_smaller_numbers_than_current"
+	smaller "impl-using-go/leetcode/1365_smaller_numbers_than_current"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"

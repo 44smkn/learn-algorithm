@@ -1,7 +1,7 @@
 package shuffle_test
 
 import (
-	shuffle "leetcode/1470_shuffle_the_array"
+	shuffle "impl-using-go/leetcode/1470_shuffle_the_array"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"

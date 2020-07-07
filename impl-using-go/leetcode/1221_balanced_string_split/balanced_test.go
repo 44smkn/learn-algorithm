@@ -1,7 +1,7 @@
 package balanced_test
 
 import (
-	balanced "leetcode/1221_balanced_string_split"
+	balanced "impl-using-go/leetcode/1221_balanced_string_split"
 	"testing"
 )
 

@@ -1,7 +1,7 @@
 package subtract_test
 
 import (
-	subtract "leetcode/1281_subtract_product_and_sum"
+	subtract "impl-using-go/leetcode/1281_subtract_product_and_sum"
 	"testing"
 )
 

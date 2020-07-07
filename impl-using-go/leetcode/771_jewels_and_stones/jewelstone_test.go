@@ -1,7 +1,7 @@
 package jewelstone_test
 
 import (
-	jewelstone "leetcode/771_jewels_and_stones"
+	jewelstone "impl-using-go/leetcode/771_jewels_and_stones"
 	"testing"
 )
 
