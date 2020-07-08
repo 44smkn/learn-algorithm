@@ -1,16 +1,20 @@
 package search
 
+// Dictionary はハッシュを利用した辞書配列を表します
 type Dictionary struct {
 	size int
 	data []*int
 }
 
+// デフォルトの辞書配列のサイズ
 const defaultDictSize = 1046527
 
+// NewDictionaryDefaultSize はデフォルトのサイズでの辞書配列を生成します
 func NewDictionaryDefaultSize() Dictionary {
 	return NewDictionary(defaultDictSize)
 }
 
+// NewDictionary は与えられたサイズで辞書配列を生成します
 func NewDictionary(size int) Dictionary {
 	return Dictionary{
 		size: size,
@@ -31,6 +35,7 @@ func h(key, i, size int) int {
 	return (h1(key, size) + i*h2(key, size)) % size
 }
 
+// Insert は辞書配列にデータを挿入します
 func (d Dictionary) Insert(key int) {
 	i := 0
 	for {
@@ -44,6 +49,7 @@ func (d Dictionary) Insert(key int) {
 	}
 }
 
+// Search は辞書配列からデータを探索します
 func (d Dictionary) Search(key int) (int, bool) {
 	i := 0
 	for {

@@ -1,6 +1,7 @@
 package search
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -76,4 +77,11 @@ func BenchmarkSearchByRange(b *testing.B) {
 			sum++
 		}
 	}
+}
+
+func ExampleNewDictionary() {
+	a := NewDictionary(1234567)
+	a.Insert(2245)
+	b, ok := a.Search(2245)
+	fmt.Println(b, ok)
 }
