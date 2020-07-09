@@ -1,7 +1,8 @@
-package search
+package search_test
 
 import (
 	"fmt"
+	"impl-using-go/aoj/search"
 	"testing"
 )
 
@@ -30,7 +31,7 @@ func TestBinarySearch(t *testing.T) {
 func multipleBinarySearch(s []int, t []int) int {
 	var count int
 	for _, v := range t {
-		if exists := binarySearch(s, v); exists {
+		if exists := search.BinarySearch(s, v); exists {
 			count++
 		}
 	}
@@ -61,7 +62,7 @@ func BenchmarkSearchBySentinel(b *testing.B) {
 	b.ResetTimer()
 	var sum int
 	for _, e := range q {
-		if SearchBySentinel(a, e, n) {
+		if search.SearchBySentinel(a, e, n) {
 			sum++
 		}
 	}
@@ -73,14 +74,14 @@ func BenchmarkSearchByRange(b *testing.B) {
 	b.ResetTimer()
 	var sum int
 	for _, e := range q {
-		if SearchByRange(a, e, n) {
+		if search.SearchByRange(a, e, n) {
 			sum++
 		}
 	}
 }
 
 func ExampleNewDictionary() {
-	a := NewDictionary(1234567)
+	a := search.NewDictionary(1234567)
 	a.Insert(2245)
 	b, ok := a.Search(2245)
 	fmt.Println(b, ok)

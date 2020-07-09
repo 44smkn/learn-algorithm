@@ -1,6 +1,6 @@
 package search
 
-func binarySearch(a []int, key int) bool {
+func BinarySearch(a []int, key int) bool {
 	left := 0
 	right := len(a)
 
