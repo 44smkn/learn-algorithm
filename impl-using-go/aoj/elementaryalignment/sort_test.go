@@ -1,7 +1,7 @@
 package elementaryalignment_test
 
 import (
-	"aoj/elementaryalignment"
+	"impl-using-go/aoj/elementaryalignment"
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
