@@ -3,26 +3,36 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
+	"sync"
 )
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Split(bufio.ScanWords)
-
-	scanner.Scan()
-	distance, _ := strconv.ParseFloat(scanner.Text(), 64)
-
-	scanner.Scan()
-	time, _ := strconv.ParseFloat(scanner.Text(), 64)
-
-	scanner.Scan()
-	speed, _ := strconv.ParseFloat(scanner.Text(), 64)
+	distance := scanSplitedFloat64()
+	time := scanSplitedFloat64()
+	speed := scanSplitedFloat64()
 
 	if distance/speed > time {
 		fmt.Println("No")
 		return
 	}
 	fmt.Println("Yes")
+}
+
+var once sync.Once
+var scanner *bufio.Scanner
+
+func scanSplitedFloat64() float64 {
+	once.Do(func() {
+		scanner = bufio.NewScanner(os.Stdin)
+		scanner.Split(bufio.ScanWords)
+	})
+	scanner.Scan()
+	val, err := strconv.ParseFloat(scanner.Text(), 64)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return val
 }
