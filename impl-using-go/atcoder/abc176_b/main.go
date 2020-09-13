@@ -6,7 +6,6 @@ import (
 	"io"
 	"os"
 	"strconv"
-	"sync"
 )
 
 func main() {
@@ -28,14 +27,9 @@ func judge(r io.Reader, w io.Writer) {
 	fmt.Fprintln(w, "No")
 }
 
-var once sync.Once
-var scanner *bufio.Scanner
-
 func scanRowText(r io.Reader) string {
-	once.Do(func() {
-		scanner = bufio.NewScanner(r)
-		scanner.Split(bufio.ScanWords)
-	})
+	scanner := bufio.NewScanner(r)
+	scanner.Split(bufio.ScanWords)
 	scanner.Scan()
 	return scanner.Text()
 }
