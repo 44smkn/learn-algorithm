@@ -3,13 +3,18 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
 	"sync"
 )
 
 func main() {
-	n := scanRowText()
+	judge(os.Stdin, os.Stdout)
+}
+
+func judge(r io.Reader, w io.Writer) {
+	n := scanRowText(r)
 	result := 0
 	for _, v := range n {
 		d, _ := strconv.Atoi(string(v))
@@ -17,18 +22,18 @@ func main() {
 		result %= 9
 	}
 	if result == 0 {
-		fmt.Println("Yes")
+		fmt.Fprintln(w, "Yes")
 		return
 	}
-	fmt.Println("No")
+	fmt.Fprintln(w, "No")
 }
 
 var once sync.Once
 var scanner *bufio.Scanner
 
-func scanRowText() string {
+func scanRowText(r io.Reader) string {
 	once.Do(func() {
-		scanner = bufio.NewScanner(os.Stdin)
+		scanner = bufio.NewScanner(r)
 		scanner.Split(bufio.ScanWords)
 	})
 	scanner.Scan()
