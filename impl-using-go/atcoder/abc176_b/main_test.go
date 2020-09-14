@@ -2,11 +2,14 @@ package main
 
 import (
 	"bytes"
+	"fmt"
+	"math/big"
 	"testing"
 )
 
 func TestJudge(t *testing.T) {
 	t.Parallel()
+	biggest := fmt.Sprintf("%v", new(big.Int).Exp(big.NewInt(10), big.NewInt(200000), nil))
 	tests := []struct {
 		name  string
 		input string
@@ -25,6 +28,11 @@ func TestJudge(t *testing.T) {
 		{
 			name:  "example3",
 			input: "31415926535897932384626433832795028841971693993751058209749445923078164062862089986280",
+			want:  "No\n",
+		},
+		{
+			name:  "biggest",
+			input: biggest,
 			want:  "No\n",
 		},
 	}

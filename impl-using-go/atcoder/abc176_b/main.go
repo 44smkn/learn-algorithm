@@ -27,8 +27,12 @@ func judge(r io.Reader, w io.Writer) {
 	fmt.Fprintln(w, "No")
 }
 
+const maxCapacity = 512 * 1024
+
 func scanRowText(r io.Reader) string {
 	scanner := bufio.NewScanner(r)
+	buf := make([]byte, maxCapacity)
+	scanner.Buffer(buf, maxCapacity)
 	scanner.Split(bufio.ScanWords)
 	scanner.Scan()
 	return scanner.Text()
