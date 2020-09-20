@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -15,6 +16,7 @@ func main() {
 func solve(r io.Reader, w io.Writer) {
 	scanner := initScanner(r)
 	// 解く
+	fmt.Fprintln(w /* 答え */)
 }
 
 // utilityメソッド群
