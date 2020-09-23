@@ -62,3 +62,21 @@ func scanString(scanner *bufio.Scanner) string {
 	scanner.Scan()
 	return scanner.Text()
 }
+
+// 階乗
+func factorial(n uint64) uint64 {
+	if n == 0 {
+		return 1
+	}
+	return n * factorial(n-1)
+}
+
+// 順列
+func perm(n, r uint64) uint64 {
+	return factorial(n) / factorial(n-r)
+}
+
+// 組み合わせ
+func combin(n, r uint64) uint64 {
+	return factorial(n) / (factorial(r) * factorial(n-r))
+}
