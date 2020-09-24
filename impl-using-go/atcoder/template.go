@@ -44,9 +44,10 @@ func scanUint64(scanner *bufio.Scanner) uint64 {
 	return val
 }
 
-func scanInt64(scanner *bufio.Scanner) int64 {
+// 64bit端末ならint64と扱われるため
+func scanInt(scanner *bufio.Scanner) int {
 	scanner.Scan()
-	val, err := strconv.ParseInt(scanner.Text(), 10, 64)
+	val, err := strconv.Atoi(scanner.Text())
 	check(err)
 	return val
 }
