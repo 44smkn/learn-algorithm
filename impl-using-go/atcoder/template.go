@@ -21,14 +21,18 @@ func solve(r io.Reader, w io.Writer) {
 
 // utilityメソッド群
 
+type Scanner struct {
+	scanner *bufio.Scanner
+}
+
 const maxCapacity = 512 * 1024 // デフォルト値は64*1024
 
-func initScanner(r io.Reader) *bufio.Scanner {
+func initScanner(r io.Reader) *Scanner {
 	scanner := bufio.NewScanner(r)
 	buf := make([]byte, maxCapacity)
 	scanner.Buffer(buf, maxCapacity)
 	scanner.Split(bufio.ScanWords) // スペースごとに読み込む
-	return scanner
+	return &Scanner{scanner: scanner}
 }
 
 func check(err error) {
@@ -37,31 +41,31 @@ func check(err error) {
 	}
 }
 
-func scanUint64(scanner *bufio.Scanner) uint64 {
-	scanner.Scan()
-	val, err := strconv.ParseUint(scanner.Text(), 10, 64)
+func (s *Scanner) uint64() uint64 {
+	s.scanner.Scan()
+	val, err := strconv.ParseUint(s.scanner.Text(), 10, 64)
 	check(err)
 	return val
 }
 
 // 64bit端末ならint64と扱われるため
-func scanInt(scanner *bufio.Scanner) int {
-	scanner.Scan()
-	val, err := strconv.Atoi(scanner.Text())
+func (s *Scanner) int() int {
+	s.scanner.Scan()
+	val, err := strconv.Atoi(s.scanner.Text())
 	check(err)
 	return val
 }
 
-func scanFloat64(scanner *bufio.Scanner) float64 {
-	scanner.Scan()
-	val, err := strconv.ParseFloat(scanner.Text(), 64)
+func (s *Scanner) float64() float64 {
+	s.scanner.Scan()
+	val, err := strconv.ParseFloat(s.scanner.Text(), 64)
 	check(err)
 	return val
 }
 
-func scanString(scanner *bufio.Scanner) string {
-	scanner.Scan()
-	return scanner.Text()
+func (s *Scanner) string() string {
+	s.scanner.Scan()
+	return s.scanner.Text()
 }
 
 // 階乗
