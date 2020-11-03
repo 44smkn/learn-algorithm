@@ -90,3 +90,53 @@ func main() {
 ### 参考文献
 
 - [累積和を何も考えずに書けるようにする！](https://qiita.com/drken/items/56a6b68edef8fc605821)
+
+## 優先度付きキュー
+
+要素１つ１つに優先度が割り当てられており、その優先度に従った順に取り出される。  
+整数を格納する優先度付きキューであれば、その要素の値自体を優先度と考え取り出す。  
+ヒープでの実装を用いた場合は、追加が`O(logN)`で、参照は`O(1)`となる。  
+
+### 解説
+
+[playground](https://play.golang.org/p/B_FF1GCtaCS)
+
+```go
+func main() {
+    h := &IntHeap{2, 5, 1}
+    heap.Init(h)
+    heap.Push(h, 7)
+    for h.Len() > 0 {
+        fmt.Printf("%d ", heap.Pop(h))
+    }
+}
+
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] > h[j] }
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x interface{}) {
+    // Push and Pop use pointer receivers because they modify the slice's length,
+    // not just its contents.
+    *h = append(*h, x.(int))
+}
+
+func (h *IntHeap) Pop() interface{} {
+    old := *h
+    n := len(old)
+    x := old[n-1]
+    *h = old[0 : n-1]
+    return x
+}
+```
+
+### 該当する問題
+
+- [abc173d](https://atcoder.jp/contests/abc173/tasks/abc173_d)
+
+### 参考文献
+
+- [優先度付きキュー](https://programming-place.net/ppp/contents/algorithm/data_struct/010.html)
+- [Package heap](https://golang.org/pkg/container/heap/)
