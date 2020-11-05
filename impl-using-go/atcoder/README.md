@@ -140,3 +140,14 @@ func (h *IntHeap) Pop() interface{} {
 
 - [優先度付きキュー](https://programming-place.net/ppp/contents/algorithm/data_struct/010.html)
 - [Package heap](https://golang.org/pkg/container/heap/)
+
+## 二重ループだけど`O(N^2)`ではなく`O(M+N)`
+
+例えば、`a[0..n]`と`b[0..m]`の配列があり、それぞれを2重ループで舐める必要があるとする。ただ、`n`と`m`の値が大きい場合に、実行時間が長くなってしまいます。  
+もし、問題の特性上、ループのある時点の`b`の値を保持/更新して実際には一度舐めるだけで十分の場合は、`O(M+N)`で処理することが可能
+
+[playground](https://play.golang.org/p/5AXBz4F9i7k)
+
+### 該当する問題
+
+- [abc172c](https://atcoder.jp/contests/abc172/tasks/abc172_c)
