@@ -32,12 +32,12 @@ macro_rules! input {
 
 
 fn main() {
-    let input = input!(i32, 1);
+    let input = input!(usize, 1);
     let n = input[0];
     let v = input[1];
-    let a = input!(i32, 1);
+    let a = input!(usize, 1);
 
-    let ans = 0;
+    let mut ans = 0;
     for i in 0..n {
         if a[i] == v {
             ans += 1;
