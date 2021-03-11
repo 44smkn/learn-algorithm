@@ -1,9 +1,7 @@
 # learn-algorithm
 
-螺旋本やLeetCodeからアルゴリズムを実装して勉強する本
-GoとRustで実装していく
-
-[![GoDoc](https://godoc.org/github.com/44smkn/learn-algorithm/impl-using-go?status.svg)](https://godoc.org/github.com/44smkn/learn-algorithm/impl-using-go)
+螺旋本やLeetCodeからアルゴリズムを実装したときのドキュメント  
+GoとRustで実装したリポジトリは別で存在する
 
 ## アルゴリズムの計算量
 
